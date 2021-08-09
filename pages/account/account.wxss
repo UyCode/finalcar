@@ -1,0 +1,16 @@
+.swiper {
+    padding: -10rpx;
+    border-radius: 10rpx;
+}
+
+.wave {
+    position: absolute;/**相对于父标签来进行定位，这里的父标签的class是header**/
+    left: 0;/**相对于父标签左边界重合**/
+    top: 445rpx;/**相对于父标签下边界重合**/
+    width: 100%;/**相对于父标签宽度为100%**/
+    mix-blend-mode: screen;/**透明部分用底部背景色填充，简称滤色**/
+    height: 386rpx;/**图片高度**/
+}
+.button-style::after {
+    border: none;
+}

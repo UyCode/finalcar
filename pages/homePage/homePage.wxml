@@ -1,0 +1,127 @@
+<!--pages/homePage/homePage.wxml-->
+
+<view class="wholeText">
+    <view>
+        <cu-custom bgColor="bg-gradual-pink" isBack="{{false}}">
+            <view slot="backText">قايتىش</view>
+            <view slot="content" style="font-size: smaller;">نىمكەش ماشىنا سودىگەرلىكى</view>
+        </cu-custom>
+    </view>
+    <view class="box">
+        <view class="cu-bar search bg-white">
+            <view class="search-form round">
+                <text class="cuIcon-search"></text>
+                <input type="text" placeholder="تېما كىرگۈزۈپ ئىزدەڭ" confirm-type="search"
+                    placeholder-class="placeholder-class"></input>
+            </view>
+            <view class="action">
+                <button class="cu-btn bg-gradual-red shadow-blur round">ئىزدەش</button>
+            </view>
+        </view>
+    </view>
+
+    <!-- <view class="swiper shadow-blur">
+        <view class="myswiper solid-right animation-slide-bottom" style="animation-delay: 0.1s;">
+            <swiper autoplay="{{true}}" interval="3000" indicator-dots="{{true}}" circular="{{ true }}"
+                easing-function="linear" vertical="{{true}}">
+                <swiper-item wx:for="{{images}}" wx:key="index">
+                    <view class="bg-img flex align-center solid-right myswiper"
+                        style="background-image: url({{item}});height: 414upx;">
+                        <view class="padding-xl text-white">
+                            <view class="padding-xs text-xxl text-bold">
+                                <text style="text-align:right;direction:rtl;" class="text-white">
+                                    ما ۋاتوجى جىددىي سىتىلىدۇ
+                                </text>
+                            </view>
+                            <view class="text-lg">
+                                <text class="myTitle">
+                                </text>
+                            </view>
+                        </view>
+                    </view>
+                </swiper-item>
+            </swiper>
+        </view>
+    </view> -->
+
+
+    <swiper class="card-swiper square-dot" indicator-dots="{{false}}" circular="true"
+        autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3"
+        indicator-active-color="#0081ff">
+        <swiper-item wx:for="{{carSwiper}}" wx:key="index" class="{{cardCur==index?'cur':''}}">
+            <view class="swiper-item">
+                <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+                <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}"
+                    objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+            </view>
+        </swiper-item>
+    </swiper>
+
+
+    <scroll-view scroll-y="true" scroll-with-animation="true" enable-back-to-top="true">
+
+        <view wx:for="{{carList}}" wx:key="index" class="animation-slide-bottom"
+            style="animation-delay: {{(index+1)*0.1}}s;">
+            <view class="cu-card case isCard">
+                <view class="cu-item shadow">
+                    <view class="image">
+                        <image src="{{item.coverUrl}}" mode="widthFix"></image>
+                        <view class="cu-tag bg-red">{{item.tag}}</view>
+                        <view class="cu-bar bg-shadeBottom myTitle">
+                            <text class="text-cut myTitle">{{item.title}}</text>
+                        </view>
+                    </view>
+                    <view class="cu-list menu-avatar">
+                        <view class="cu-item">
+                            <view class="cu-avatar round lg" style="background-image:url({{item.avatarUrl}});">
+                            </view>
+                            <view class="content flex-sub">
+                                <view class="text-grey">{{item.contactPhone}}: {{item.holder}} </view>
+                                <view class="text-gray text-sm flex justify-between">
+                                    باھاسى: {{item.price}}
+                                    <view class="text-gray text-sm">
+                                        <text class="cuIcon-attentionfill margin-lr-xs"></text> {{item.views}}
+                                        <text class="cuIcon-appreciatefill margin-lr-xs"></text> {{item.likes}}
+                                        <text class="cuIcon-messagefill margin-lr-xs"></text> {{item.messages}}
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+
+            </view>
+        </view>
+    </scroll-view>
+
+    <view>
+        <view class="cu-bar tabbar bg-white shadow foot">
+            <view class="action" bindtap="NavChange" data-cur="account">
+                <view class='cuIcon-cu-image'>
+                    <image src="../../image/user{{PageCur=='account'?'':''}}.png"></image>
+                </view>
+                <view class="{{PageCur=='account'?'text-orange':'text-gray'}}">مۇلازىمەت</view>
+            </view>
+            <view class="action" bindtap="NavChange" data-cur="class">
+                <view class='cuIcon-cu-image'>
+                    <image src="../../image/class{{PageCur=='class'?'':''}}.png"></image>
+                </view>
+                <view class="{{PageCur=='class'?'text-orange':'text-gray'}}">تۈرلەر</view>
+            </view>
+            <view class="action" bindtap="NavChange" data-cur="homePage">
+                <view class='cuIcon-cu-image'>
+                    <image src="../../image/homePage{{PageCur=='homePage'?'':''}}.png"></image>
+                </view>
+                <view class="{{PageCur=='homePage'?'text-orange':'text-gray'}}">باشبەت</view>
+            </view>
+        </view>
+    </view>
+
+        
+    <!-- <view class='cu-load load-modal' wx:if="{{loadModal}}">
+        <image src='../../image/21loading.png' class='png' mode='aspectFit'></image>
+        <view class='gray-text'>...يۈكلىنىۋاتىدۇ</view>
+    </view> -->
+    <loading loadModal="{{loadModal}}"></loading>
+
+</view>

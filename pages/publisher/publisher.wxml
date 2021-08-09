@@ -1,0 +1,9 @@
+<!--pages/publisher/publisher.wxml-->
+<view class="wholeText">
+    <view>
+        <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+            <view slot="backText">قايتىش</view>
+            <view slot="content" style="font-size: smaller;">نىمكەش ماشىنا سودىگەرلىكى</view>
+        </cu-custom>
+    </view>
+</view>

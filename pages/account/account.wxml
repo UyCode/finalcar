@@ -1,0 +1,133 @@
+<!--pages/homePage/homePage.wxml-->
+
+<view class="wholeText">
+    <view>
+        <cu-custom bgColor="bg-gradual-pink" isBack="{{false}}">
+            <!-- <view slot="backText">قايتىش</view> -->
+            <view slot="content" style="font-size: smaller;">نىمكەش ماشىنا سودىگەرلىكى</view>
+        </cu-custom>
+    </view>
+
+    <view class="bg-img padding-tb-xl bg-shadeTop"
+        style="background-image: url({{userBg}});height: 414rpx;">
+        <view class="padding">
+            <view class="cu-avatar round lg margin-right" style="background-image:url('{{userInfo.avatarUrl}}');">
+                <view class="cu-tag badge {{userInfo.gender==0?'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}"></view>
+            </view>
+        </view>
+        <view class="padding-xl text-white">
+            <view class="padding-xs text-xl">
+                {{userInfo.nickName}}
+            </view>
+            <view class="padding-xs" wx:if="{{!hasUserInfo}}">
+                {{notRegisteredInfo}}
+            </view>
+        </view>
+            <image
+                src="../../image/wave.gif"
+                mode='widthFix' class="wave"></image>
+
+    </view>
+
+    <view class="padding-sm">
+        <view class="bg-gradual-red padding radius text-center shadow-blur" wx:if="{{!hasUserInfo}}">
+            <!-- <view class="text-lg">تېزىملىتىش</view> -->
+            <button class="text-lg bg-gradual-red button-style animation-fade" wx:if="{{canIUseGetUserProfile}}"
+                bindtap="getUserProfile">تېزىملىتىش</button>
+            <button wx:elif="{{canIUse}}" class="text-lg bg-gradual-red button-style animation-fade"
+                open-type="getUserInfo" bindgetuserinfo="getUserInfo"> تېزىملىتىش </button>
+        </view>
+    </view>
+    <!-- <view class="userinfo">
+        <block wx:if="{{canIUseOpenData}}">
+            <view class="userinfo-avatar" bindtap="bindViewTap">
+                <open-data type="userAvatarUrl"></open-data>
+            </view>
+            <open-data type="userNickName"></open-data>
+        </block>
+        <block wx:elif="{{!hasUserInfo}}">
+            <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> تېزىملىتىش </button>
+            <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+            <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+        </block>
+        <block wx:else>
+            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </block>
+    </view> -->
+
+<view style="direction: rtl;">
+    <view class="padding flex text-center text-grey bg-white shadow-warp">
+    <view class="flex flex-sub flex-direction">
+      <view class="text-xxl text-orange">{{visitTotal}}</view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-attentionfill"></text>كۆرگىنىم</view>
+    </view>
+    <view class="flex flex-sub flex-direction solid-right">
+      <view class="text-xxl text-blue">{{starCount}}</view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-favorfill"></text>ياقتۇرغىنىم</view>
+    </view>
+    <view class="flex flex-sub flex-direction solid-right">
+      <view class="text-xxl text-green">{{forksCount}}</view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-fork"></text>ئالاقىلاشقىنىم</view>
+    </view>
+</view>
+
+
+
+  </view>
+
+  <view>
+  <!-- about me setting buttons  -->
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow">
+      <button class="content" bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI">
+        <text class="cuIcon-likefill text-red"></text>
+        <text class="text-grey">ساقلانمام</text>
+      </button>
+    </view>
+    <view class="cu-item arrow">
+      <button class="content" hover-class="none">
+        <text class="cuIcon-formfill text-green"></text>
+        <text class="text-grey">مەشخۇلات خاتىرسى</text>
+      </button>
+    </view>
+    <view class="cu-item arrow">
+      <button class="content" hover-class="none">
+        <text class="cuIcon-writefill text-cyan"></text>
+        <text class="text-grey">مەزمۇن يوللاش</text>
+      </button>
+    </view>
+  </view>
+  
+  </view>
+
+
+
+    <view>
+        <view class="cu-bar tabbar bg-white shadow foot">
+            <view class="action" bindtap="NavChange" data-cur="account">
+                <view class='cuIcon-cu-image'>
+                    <image src="../../image/user{{PageCur=='account'?'':''}}.png"></image>
+                </view>
+                <view class="{{PageCur=='account'?'text-orange':'text-gray'}}">مۇلازىمەت</view>
+            </view>
+            <view class="action" bindtap="NavChange" data-cur="class">
+                <view class='cuIcon-cu-image'>
+                    <image src="../../image/class{{PageCur=='class'?'':''}}.png"></image>
+                </view>
+                <view class="{{PageCur=='class'?'text-orange':'text-gray'}}">تۈرلەر</view>
+            </view>
+            <view class="action" bindtap="NavChange" data-cur="homePage">
+                <view class='cuIcon-cu-image'>
+                    <image src="../../image/homePage{{PageCur=='homePage'?'':''}}.png"></image>
+                </view>
+                <view class="{{PageCur=='homePage'?'text-orange':'text-gray'}}">باشبەت</view>
+            </view>
+        </view>
+    </view>
+
+
+</view>

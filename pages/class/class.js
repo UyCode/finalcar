@@ -11,7 +11,7 @@ Page({
     },
     onLoad: function (options) {
         this.loadModal();
-        http.get('/type/list', {},
+        http.get('type/list', {},
             (res) => {
                 if (res.code == '0') {
                     console.log(res.data);

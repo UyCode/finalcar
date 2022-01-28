@@ -55,7 +55,7 @@ Page({
           });
     },
     getCar: function () {
-        http.get('/cars/list',{},
+        http.get('cars/list',{},
             (res) => {
                 if (res.code == 0) {
                     this.setData({
@@ -65,6 +65,27 @@ Page({
             },
             (error) => {console.log(error);}
         );
+    },
+
+    getDetail: function(event){
+        console.log(event.currentTarget.dataset.carId);
+        const id = event.currentTarget.dataset.carId;
+        wx.navigateTo({
+            url: `../cardetail/cardetail`,
+            events: {
+              // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+              acceptDataFromOpenedPage: function(id) {
+                console.log(id)
+              },
+              someEvent: function(id) {
+                console.log(id)
+              }
+            },
+            success: function(res) {
+              // 通过eventChannel向被打开页面传送数据
+              res.eventChannel.emit('acceptDataFromOpenerPage', { data: id})
+            }
+          })
     },
 
     /**

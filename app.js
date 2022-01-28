@@ -9,11 +9,12 @@ App({
         const body = {
           code: loginRes.code
         };
-        http.post('/user/login', body, res => {
+        http.post('user/login', body, res => {
           console.log(res);
           if (res.code == 0) {
             wx.setStorageSync('userInfo', res.data);
             wx.setStorageSync('skey', res.data.skey);
+            wx.setStorageSync('token', res.data.token);
 
             _this.globalData.userInfo = wx.getStorageSync('userInfo');
             _this.globalData.hasUserInfo = true;
@@ -54,5 +55,6 @@ App({
     canIUse: false,
     canIUseGetUserProfile: false,
     canIUseOpenData: false,
+    token: ''
   },
 })

@@ -42,7 +42,7 @@ Page({
         });
     },
     onLoad() {
-        console.log(app);
+        console.log("app is: ",app);
         this.setData({
             userInfo: app.globalData.userInfo,
             hasUserInfo: app.globalData.hasUserInfo,
@@ -77,7 +77,7 @@ Page({
                             encryptedData: infoRes.encryptedData,
                             iv: infoRes.iv
                         };
-                        http.post('/user/login', body,
+                        http.post('user/login', body,
                             (res) => {
                                 if (res.code == 0) {
                                     // 7.小程序存储skey（自定义登录状态）到本地

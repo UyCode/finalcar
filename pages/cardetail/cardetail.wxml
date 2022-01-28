@@ -1,0 +1,37 @@
+<!--pages/cardetail/cardetail.wxml-->
+<view class="wholeText">
+    <view>
+        <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+            <view slot="backText">قايتىش</view>
+            <view slot="content" style="font-size: smaller;">نىمكەش ماشىنا سودىگەرلىكى</view>
+        </cu-custom>
+    </view>
+    <view class="cu-card case isCard">
+        <view class="cu-item shadow">
+            <view class="image">
+                <image src="{{carDetail.coverUrl}}" mode="widthFix"></image>
+                <view class="cu-tag bg-red">{{carDetail.tag}}</view>
+                <view class="cu-bar bg-shadeBottom myTitle">
+                    <text class="text-cut myTitle">{{carDetail.title}}</text>
+                </view>
+            </view>
+            <view class="cu-list menu-avatar">
+                <view class="cu-item">
+                    <view class="cu-avatar round lg" style="background-image:url({{carDetail.avatarUrl}});">
+                    </view>
+                    <view class="content flex-sub">
+                        <view class="text-grey">{{carDetail.contactPhone}}: {{carDetail.holder}} </view>
+                        <view class="text-gray text-sm flex justify-between">
+                            باھاسى: {{carDetail.price}}
+                            <view class="text-gray text-sm">
+                                <text class="cuIcon-attentionfill margin-lr-xs"></text> {{carDetail.views}}
+                                <text class="cuIcon-appreciatefill margin-lr-xs"></text> {{carDetail.likes}}
+                                <text class="cuIcon-messagefill margin-lr-xs"></text> {{carDetail.messages}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

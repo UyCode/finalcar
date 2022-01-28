@@ -51,8 +51,8 @@
         <swiper-item wx:for="{{carSwiper}}" wx:key="index" class="{{cardCur==index?'cur':''}}">
             <view class="swiper-item">
                 <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
-                <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}"
-                    objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+                <!-- <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}"
+                    objectFit="cover" wx:if="{{item.type=='video'}}"></video> -->
             </view>
         </swiper-item>
     </swiper>
@@ -62,7 +62,7 @@
 
         <view wx:for="{{carList}}" wx:key="index" class="animation-slide-bottom"
             style="animation-delay: {{(index+1)*0.1}}s;">
-            <view class="cu-card case isCard">
+            <view class="cu-card case isCard" data-car-id="{{carList[index].id}}" bindtap="getDetail">
                 <view class="cu-item shadow">
                     <view class="image">
                         <image src="{{item.coverUrl}}" mode="widthFix"></image>
